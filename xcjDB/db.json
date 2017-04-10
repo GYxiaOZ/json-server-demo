@@ -1,0 +1,10 @@
+{
+  "version": [
+    { "type": 0},
+    { "type": 1 }
+  ],
+  "Ios": [
+    { "id": 1, "body": "some comment", "versionId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}

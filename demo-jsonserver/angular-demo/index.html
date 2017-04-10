@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>json-sever demo</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+
+    <script src="http://cdn.bootcss.com/angular.js/1.3.0/angular.min.js"></script>
+    <script src="http://cdn.bootcss.com/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+    <script src="mock.interceptor.js"></script>
+    <script src="app.js"></script>
+    <style>
+        .user{
+            background: #2c3e50;
+            border-radius: 5px;
+            border: 1px solid #34495E;
+            text-align: center;
+            color: #16A085;
+            margin: 10px 0;
+            padding: 10px 0;
+        }
+
+        .user p{
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body ng-app="app">
+
+    <div class="container" ng-controller="demoCtrl">
+        <div class="row">
+            <div class="col-md-3" ng-repeat="user in users">
+                <div class="user">
+                    <img ng-src="{{user.avatar}}" class="img-thumbnail">
+                    <p>
+                        <label>ID:</label>
+                        <span ng-bind="user.id"></span>
+                    </p>
+                    <p>
+                        <label>Name:</label>
+                        <span ng-bind="user.name"></span>
+                    </p>
+                    <a class="btn btn-danger" ng-click="remove(user.id, $index)">删除</a>
+                </div>
+            </div>
+        </div>
+
+        <ul uib-pagination total-items="users.total" ng-model="pi" boundary-links="true" items-per-page="ps"></ul>
+
+        <div>
+            <form>
+                <div class="form-group">
+                    <label for="name">name</label>
+                    <input type="text" class="form-control" ng-model="name" id="name" placeholder="name">
+                    <label for="avatar">avatar</label>
+                    <input type="text" class="form-control" ng-model="avatar" id="avatar" placeholder="avatar">
+                </div>
+                <a class="btn btn-primary" ng-click="add(name, avatar)">增加</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
